@@ -5,4 +5,6 @@ class Question < ApplicationRecord
 
   # Validations
 
+  validates :text, :presence => true
+
 end
