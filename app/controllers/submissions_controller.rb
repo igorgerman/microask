@@ -10,7 +10,8 @@ class SubmissionsController < ApplicationController
   end
 
   def index
-    @submissions = Submission.page(params[:page]).per(10)
+    @q = Submission.ransack(params[:q])
+    @submissions = @q.result(:distinct => true).includes(:user, :question).page(params[:page]).per(10)
 
     render("submissions/index.html.erb")
   end
