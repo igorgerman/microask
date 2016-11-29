@@ -5,6 +5,8 @@ class Question < ApplicationRecord
 
   # Validations
 
+  validates :restaurant_id, :presence => true
+
   validates :text, :presence => true
 
 end
