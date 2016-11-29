@@ -17,7 +17,7 @@
 
       <% @submissions.each do |submission| %>
       <tr>
-        <td><%= submission.question_id %></td>
+        <td><%= submission.question.text %></td>
         <td><%= submission.user_id %></td>
         <td><%= submission.selection %></td>
         <td>
