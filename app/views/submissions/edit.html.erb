@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @submission.errors.any? %>
+  <% @submission.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Submission #<%= @submission.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_submission/<%= @submission.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for question_id -->
+      <div class="form-group">
+        <label for="question_id" class="control-label">
+          Question
+        </label>
+
+        <input type="text" id="question_id" name="question_id" placeholder="Question" class="form-control" value="<%= @submission.question_id %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @submission.user_id %>">
+      </div>
+
+      <!-- Label and input for selection -->
+      <div class="form-group">
+        <label for="selection" class="control-label">
+          Selection
+        </label>
+
+        <input type="text" id="selection" name="selection" placeholder="Selection" class="form-control" value="<%= @submission.selection %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Submission
+      </button>
+      or
+      <a href="/submissions/<%= @submission.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
