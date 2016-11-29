@@ -8,6 +8,10 @@ class Question < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :responses,
+             :through => :submissions,
+             :source => :user
+
   # Validations
 
   validates :option_1, :presence => true
