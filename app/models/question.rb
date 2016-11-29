@@ -1,6 +1,8 @@
 class Question < ApplicationRecord
   # Direct associations
 
+  belongs_to :restaurant
+
   has_many   :submissions,
              :dependent => :destroy
 
