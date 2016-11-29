@@ -1,4 +1,14 @@
 class SubmissionsController < ApplicationController
+  before_action :current_user_must_be_submission_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_submission_user
+    submission = Submission.find(params[:id])
+
+    unless current_user == submission.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @submissions = Submission.all
 

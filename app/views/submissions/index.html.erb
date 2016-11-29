@@ -22,8 +22,11 @@
         <td><%= submission.selection %></td>
         <td>
           <a href="/submissions/<%= submission.id %>" class="btn btn-primary">Show</a>
-          <a href="/submissions/<%= submission.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_submission/<%= submission.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == submission.user %>
+            <a href="/submissions/<%= submission.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_submission/<%= submission.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
